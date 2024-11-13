@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sistema de Climantización en una UTI: Referencia del Archivo C:/Repositorios/Cabrera_2C_2024/firmware/projects/Proyecto_Integrador/main/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Sistema de Climantización en una UTI<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Este programa controla un sistema de temperatura, humedad y luz en un entorno UTI</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Buscar','.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('main_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Estructuras de datos</a> &#124;
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del Archivo main.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="analog__io__mcu_8h_source.html">analog_io_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gpio__mcu_8h_source.html">gpio_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ble__mcu_8h_source.html">ble_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
+<code>#include &quot;string.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="rtc__mcu_8h_source.html">rtc_mcu.h</a>&quot;</code><br />
+<code>#include &quot;dht11.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="servo__sg90_8h_source.html">servo_sg90.h</a>&quot;</code><br />
+</div>
+<p><a href="main_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Estructuras de datos</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgpio_config__t.html">gpioConfig_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a416de5bd22e918b2ebbc2bd44fd47aa8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a416de5bd22e918b2ebbc2bd44fd47aa8">CONFIG_PERIOD_S_A</a>&#160;&#160;&#160;1000000</td></tr>
+<tr class="separator:a416de5bd22e918b2ebbc2bd44fd47aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a836182d52c41410eac0ec6a06df54448"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a836182d52c41410eac0ec6a06df54448">CONFIG_PERIOD_S_B</a>&#160;&#160;&#160;2000000</td></tr>
+<tr class="separator:a836182d52c41410eac0ec6a06df54448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ac4eebe83f587ab40ed41d5ab37cbabe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac4eebe83f587ab40ed41d5ab37cbabe6">funcionTimerA</a> (void *pParam)</td></tr>
+<tr class="memdesc:ac4eebe83f587ab40ed41d5ab37cbabe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función de callback para el Timer A.  <a href="main_8c.html#ac4eebe83f587ab40ed41d5ab37cbabe6">Más...</a><br /></td></tr>
+<tr class="separator:ac4eebe83f587ab40ed41d5ab37cbabe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13107e7e9e4d3a0aa8551c0387d354b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a13107e7e9e4d3a0aa8551c0387d354b1">funcionTimerB</a> (void *pParam)</td></tr>
+<tr class="memdesc:a13107e7e9e4d3a0aa8551c0387d354b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función de callback para el Timer B.  <a href="main_8c.html#a13107e7e9e4d3a0aa8551c0387d354b1">Más...</a><br /></td></tr>
+<tr class="separator:a13107e7e9e4d3a0aa8551c0387d354b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+<tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a443368eeb475f5ed70bf623d45f22c02"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a443368eeb475f5ed70bf623d45f22c02">climate_control_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="memdesc:a443368eeb475f5ed70bf623d45f22c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicialización del Identificador de tareas.  <a href="main_8c.html#a443368eeb475f5ed70bf623d45f22c02">Más...</a><br /></td></tr>
+<tr class="separator:a443368eeb475f5ed70bf623d45f22c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3faca15909df314da0d6c73a945fe7ac"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3faca15909df314da0d6c73a945fe7ac">light_curtain_control_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="separator:a3faca15909df314da0d6c73a945fe7ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab455c3ff475779a20a41e3a2c7dd96ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ab455c3ff475779a20a41e3a2c7dd96ba">system_on</a> = false</td></tr>
+<tr class="memdesc:ab455c3ff475779a20a41e3a2c7dd96ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable global para encendido/apagado del sistema.  <a href="main_8c.html#ab455c3ff475779a20a41e3a2c7dd96ba">Más...</a><br /></td></tr>
+<tr class="separator:ab455c3ff475779a20a41e3a2c7dd96ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2713f837b0884bd1a5fc0995e6757c5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ab2713f837b0884bd1a5fc0995e6757c5">mensaje_cortina</a> [20]</td></tr>
+<tr class="separator:ab2713f837b0884bd1a5fc0995e6757c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9605ec8d856ce1e76993060bab362a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#abf9605ec8d856ce1e76993060bab362a">mensaje_humedad</a> [20]</td></tr>
+<tr class="separator:abf9605ec8d856ce1e76993060bab362a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a0852c4a2814ba186b4df80819f600"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a67a0852c4a2814ba186b4df80819f600">mensaje_lum</a> [20]</td></tr>
+<tr class="separator:a67a0852c4a2814ba186b4df80819f600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e02ec356558e68575f4610b19c99194"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a2e02ec356558e68575f4610b19c99194">mensaje_temp</a> [20]</td></tr>
+<tr class="separator:a2e02ec356558e68575f4610b19c99194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0615488bb0047fc89b0668bc96807b0c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0615488bb0047fc89b0668bc96807b0c">mensaje_cale</a> [20]</td></tr>
+<tr class="separator:a0615488bb0047fc89b0668bc96807b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49476aced03c4b2e67fb26484cc0336b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a49476aced03c4b2e67fb26484cc0336b">mensaje_aire</a> [20]</td></tr>
+<tr class="separator:a49476aced03c4b2e67fb26484cc0336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace011cae77d40ee658847ba503886621"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ace011cae77d40ee658847ba503886621">fecha_hora</a> [30]</td></tr>
+<tr class="separator:ace011cae77d40ee658847ba503886621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de los 'defines'</h2>
+<a id="a416de5bd22e918b2ebbc2bd44fd47aa8" name="a416de5bd22e918b2ebbc2bd44fd47aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a416de5bd22e918b2ebbc2bd44fd47aa8">&#9670;&nbsp;</a></span>CONFIG_PERIOD_S_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_S_A&#160;&#160;&#160;1000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00048">48</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a836182d52c41410eac0ec6a06df54448" name="a836182d52c41410eac0ec6a06df54448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a836182d52c41410eac0ec6a06df54448">&#9670;&nbsp;</a></span>CONFIG_PERIOD_S_B</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_PERIOD_S_B&#160;&#160;&#160;2000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00049">49</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&nbsp;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Configuración de Bluetooth</p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00307">307</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="led_8c_source.html#l00031">LedsInit()</a>.</p>
+
+</div>
+</div>
+<a id="ac4eebe83f587ab40ed41d5ab37cbabe6" name="ac4eebe83f587ab40ed41d5ab37cbabe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4eebe83f587ab40ed41d5ab37cbabe6">&#9670;&nbsp;</a></span>funcionTimerA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void funcionTimerA </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pParam</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función de callback para el Timer A. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00295">295</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00052">climate_control_task_handle</a>.</p>
+
+</div>
+</div>
+<a id="a13107e7e9e4d3a0aa8551c0387d354b1" name="a13107e7e9e4d3a0aa8551c0387d354b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13107e7e9e4d3a0aa8551c0387d354b1">&#9670;&nbsp;</a></span>funcionTimerB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void funcionTimerB </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pParam</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función de callback para el Timer B. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00302">302</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="main_8c_source.html#l00053">light_curtain_control_task_handle</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las variables</h2>
+<a id="a443368eeb475f5ed70bf623d45f22c02" name="a443368eeb475f5ed70bf623d45f22c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a443368eeb475f5ed70bf623d45f22c02">&#9670;&nbsp;</a></span>climate_control_task_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t climate_control_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicialización del Identificador de tareas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00052">52</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00295">funcionTimerA()</a>.</p>
+
+</div>
+</div>
+<a id="ace011cae77d40ee658847ba503886621" name="ace011cae77d40ee658847ba503886621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace011cae77d40ee658847ba503886621">&#9670;&nbsp;</a></span>fecha_hora</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char fecha_hora[30]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00068">68</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a3faca15909df314da0d6c73a945fe7ac" name="a3faca15909df314da0d6c73a945fe7ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3faca15909df314da0d6c73a945fe7ac">&#9670;&nbsp;</a></span>light_curtain_control_task_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t light_curtain_control_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00053">53</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="main_8c_source.html#l00302">funcionTimerB()</a>.</p>
+
+</div>
+</div>
+<a id="a49476aced03c4b2e67fb26484cc0336b" name="a49476aced03c4b2e67fb26484cc0336b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49476aced03c4b2e67fb26484cc0336b">&#9670;&nbsp;</a></span>mensaje_aire</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_aire[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00067">67</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a0615488bb0047fc89b0668bc96807b0c" name="a0615488bb0047fc89b0668bc96807b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0615488bb0047fc89b0668bc96807b0c">&#9670;&nbsp;</a></span>mensaje_cale</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_cale[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00066">66</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="ab2713f837b0884bd1a5fc0995e6757c5" name="ab2713f837b0884bd1a5fc0995e6757c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2713f837b0884bd1a5fc0995e6757c5">&#9670;&nbsp;</a></span>mensaje_cortina</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_cortina[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00062">62</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="abf9605ec8d856ce1e76993060bab362a" name="abf9605ec8d856ce1e76993060bab362a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9605ec8d856ce1e76993060bab362a">&#9670;&nbsp;</a></span>mensaje_humedad</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_humedad[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00063">63</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a67a0852c4a2814ba186b4df80819f600" name="a67a0852c4a2814ba186b4df80819f600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a0852c4a2814ba186b4df80819f600">&#9670;&nbsp;</a></span>mensaje_lum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_lum[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00064">64</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a2e02ec356558e68575f4610b19c99194" name="a2e02ec356558e68575f4610b19c99194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e02ec356558e68575f4610b19c99194">&#9670;&nbsp;</a></span>mensaje_temp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char mensaje_temp[20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00065">65</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="ab455c3ff475779a20a41e3a2c7dd96ba" name="ab455c3ff475779a20a41e3a2c7dd96ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab455c3ff475779a20a41e3a2c7dd96ba">&#9670;&nbsp;</a></span>system_on</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool system_on = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable global para encendido/apagado del sistema. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="main_8c_source.html#l00059">59</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a class="el" href="dir_6a492918b4b1b94bfe7d2566f732ae10.html">Proyecto_Integrador</a></li><li class="navelem"><a class="el" href="dir_3b199c4b78c4e35bce7c24e7e2cd4ae5.html">main</a></li><li class="navelem"><a class="el" href="main_8c.html">main.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>
